@@ -10,6 +10,20 @@ The purpose is not to ship another generic chatbot. The purpose is to show how a
 
 Gigamon has rich network visibility in Sentinel; MCP turns that visibility into reusable agent tools such as "summarize posture," "triage lateral movement," "hunt DNS anomalies," and "summarize TLS risk."
 
+## Architecture at a glance
+
+```mermaid
+flowchart LR
+    A["🛰️ Gigamon network telemetry<br/>(CCF / deep observability)"] -->|LogSeeder<br/>DCE + DCR| B[("📊 Microsoft Sentinel<br/>GigamonCcfMcpDemo_CL")]
+    B --> C["📜 KQL tools<br/>mcp-tools/*.kql"]
+    C -->|"Defender portal<br/>'Save as tool' (UI)"| D["🧰 Sentinel MCP Collection<br/>Gigamon-Sentinel-MCP-Demo"]
+    D --> E["🤖 VS Code · Copilot Studio<br/>Foundry · Claude · ChatGPT"]
+    D --> F["💻 terminal_demo.py<br/>(local agent)"]
+    style A fill:#1f6feb,stroke:#1f6feb,color:#fff
+    style B fill:#0969da,stroke:#0969da,color:#fff
+    style D fill:#8250df,stroke:#8250df,color:#fff
+```
+
 ## Recommended path for a live working session
 
 If you are walking through this with a Gigamon developer, start here:
