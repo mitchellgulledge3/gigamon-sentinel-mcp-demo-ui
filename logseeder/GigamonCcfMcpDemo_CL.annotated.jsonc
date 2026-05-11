@@ -1,0 +1,1388 @@
+// Annotated JSONC companion for logseeder/GigamonCcfMcpDemo_CL.json.
+// Keep the .json file valid for LogSeeder; use this .jsonc file to understand intent.
+{
+  // LogSeeder reads this array and creates matching custom-table columns.
+  "columns": [
+    // TimeGenerated: official Gigamon CCF column typed as datetime.
+    {
+          "name": "TimeGenerated",
+          "type": "datetime"
+    },
+    // RawData: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "RawData",
+          "type": "string",
+          "values": [
+                "gigamon-ccf visibility flow: smb lateral movement candidate",
+                "gigamon-ccf dns telemetry: suspicious lookup from workload segment",
+                "gigamon-ccf tls telemetry: weak protocol and JA3 fingerprint observed",
+                "gigamon-ccf application visibility: high-volume outbound transfer",
+                "gigamon-ccf normal baseline: sanctioned business application traffic"
+          ]
+    },
+    // ts: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ts",
+          "type": "string",
+          "values": [
+                "2026-05-07T18:00:00Z",
+                "2026-05-07T18:02:00Z",
+                "2026-05-07T18:04:00Z"
+          ]
+    },
+    // vendor: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "vendor",
+          "type": "string",
+          "values": [
+                "Gigamon"
+          ]
+    },
+    // version: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "version",
+          "type": "string",
+          "values": [
+                "6.8.00",
+                "6.9.00"
+          ]
+    },
+    // generator: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "generator",
+          "type": "string",
+          "values": [
+                "GigaVUE-FM",
+                "Gigamon Application Metadata Intelligence",
+                "Gigamon ThreatINSIGHT"
+          ]
+    },
+    // dst_mac: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dst_mac",
+          "type": "string",
+          "values": [
+                "00:50:56:a1:10:20",
+                "00:50:56:a1:10:21",
+                "00:50:56:b2:44:10"
+          ]
+    },
+    // src_mac: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "src_mac",
+          "type": "string",
+          "values": [
+                "00:50:56:c0:00:08",
+                "00:50:56:c0:00:09",
+                "00:50:56:d4:22:18"
+          ]
+    },
+    // device_inbound_interface: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "device_inbound_interface",
+          "type": "string",
+          "values": [
+                "prod-east-west-vtap",
+                "dmz-span-01",
+                "core-fabric-ingress"
+          ]
+    },
+    // app_id: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "app_id",
+          "type": "string",
+          "values": [
+                "445",
+                "3389",
+                "53",
+                "443",
+                "22",
+                "8443"
+          ]
+    },
+    // src_ipv6: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "src_ipv6",
+          "type": "string",
+          "values": [
+                "",
+                "2001:db8:10::15"
+          ]
+    },
+    // dst_ipv6: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dst_ipv6",
+          "type": "string",
+          "values": [
+                "",
+                "2001:db8:20::8"
+          ]
+    },
+    // ip_version: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ip_version",
+          "type": "string",
+          "values": [
+                "4",
+                "6"
+          ]
+    },
+    // next_hdr_v6: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "next_hdr_v6",
+          "type": "string",
+          "values": [
+                "TCP",
+                "UDP",
+                ""
+          ]
+    },
+    // src_bytes: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "src_bytes",
+          "type": "string",
+          "values": [
+                "42150",
+                "984223",
+                "1420",
+                "8812000",
+                "2210"
+          ]
+    },
+    // dst_bytes: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dst_bytes",
+          "type": "string",
+          "values": [
+                "3201",
+                "12002",
+                "980",
+                "204500",
+                "6430"
+          ]
+    },
+    // src_packets: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "src_packets",
+          "type": "string",
+          "values": [
+                "43",
+                "784",
+                "4",
+                "5210",
+                "18"
+          ]
+    },
+    // dst_packets: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dst_packets",
+          "type": "string",
+          "values": [
+                "11",
+                "92",
+                "3",
+                "302",
+                "24"
+          ]
+    },
+    // start_time: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "start_time",
+          "type": "string",
+          "values": [
+                "2026-05-07T18:01:01Z",
+                "2026-05-07T18:02:18Z",
+                "2026-05-07T18:03:44Z"
+          ]
+    },
+    // end_time: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "end_time",
+          "type": "string",
+          "values": [
+                "2026-05-07T18:01:43Z",
+                "2026-05-07T18:03:10Z",
+                "2026-05-07T18:04:11Z"
+          ]
+    },
+    // intf_name: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "intf_name",
+          "type": "string",
+          "values": [
+                "prod-east-west",
+                "internet-egress",
+                "dmz-core",
+                "identity-segment"
+          ]
+    },
+    // egress_intf_id: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "egress_intf_id",
+          "type": "string",
+          "values": [
+                "101",
+                "203",
+                "301"
+          ]
+    },
+    // app_name: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "app_name",
+          "type": "string",
+          "values": [
+                "smb",
+                "rdp",
+                "dns",
+                "tls",
+                "ssh",
+                "https",
+                "unknown-tcp"
+          ]
+    },
+    // id: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "id",
+          "type": "string",
+          "values": [
+                "gigamon-demo-flow-001",
+                "gigamon-demo-flow-002",
+                "gigamon-demo-flow-003",
+                "gigamon-demo-flow-004"
+          ]
+    },
+    // seq_num: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "seq_num",
+          "type": "string",
+          "values": [
+                "1001",
+                "1002",
+                "1003",
+                "1004"
+          ]
+    },
+    // src_ip: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "src_ip",
+          "type": "string",
+          "values": [
+                "10.42.10.15",
+                "10.42.10.23",
+                "10.42.20.50",
+                "172.16.5.11",
+                "192.0.2.45"
+          ]
+    },
+    // dst_ip: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dst_ip",
+          "type": "string",
+          "values": [
+                "10.42.20.50",
+                "10.42.30.21",
+                "10.42.40.8",
+                "198.51.100.77",
+                "203.0.113.20"
+          ]
+    },
+    // protocol: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "protocol",
+          "type": "string",
+          "values": [
+                "TCP",
+                "UDP"
+          ]
+    },
+    // src_port: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "src_port",
+          "type": "string",
+          "values": [
+                "51512",
+                "51513",
+                "49200",
+                "61022",
+                "44321"
+          ]
+    },
+    // dst_port: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dst_port",
+          "type": "string",
+          "values": [
+                "445",
+                "3389",
+                "53",
+                "443",
+                "22",
+                "8443"
+          ]
+    },
+    // dns_name: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_name",
+          "type": "string",
+          "values": [
+                "stage-sync.contoso-lab.example",
+                "cdn.gigamon.example",
+                "updates.microsoft.com",
+                "rare-beacon.bad-example.test"
+          ]
+    },
+    // dns_host: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_host",
+          "type": "string",
+          "values": [
+                "stage-sync.contoso-lab.example",
+                "rare-beacon.bad-example.test",
+                "updates.microsoft.com"
+          ]
+    },
+    // dns_host_addr: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_host_addr",
+          "type": "string",
+          "values": [
+                "198.51.100.77",
+                "203.0.113.20",
+                "20.42.65.90"
+          ]
+    },
+    // dns_host_type: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_host_type",
+          "type": "string",
+          "values": [
+                "A",
+                "AAAA",
+                "CNAME"
+          ]
+    },
+    // dns_reply_code: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_reply_code",
+          "type": "string",
+          "values": [
+                "NOERROR",
+                "NXDOMAIN",
+                "SERVFAIL"
+          ]
+    },
+    // dns_ttl: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_ttl",
+          "type": "string",
+          "values": [
+                "60",
+                "300",
+                "3600"
+          ]
+    },
+    // dns_flags: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_flags",
+          "type": "string",
+          "values": [
+                "qr rd ra",
+                "rd",
+                "qr aa rd ra"
+          ]
+    },
+    // dns_opcode: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_opcode",
+          "type": "string",
+          "values": [
+                "QUERY"
+          ]
+    },
+    // dns_class: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_class",
+          "type": "string",
+          "values": [
+                "IN"
+          ]
+    },
+    // dns_host_class: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_host_class",
+          "type": "string",
+          "values": [
+                "IN"
+          ]
+    },
+    // dns_host_raw: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_host_raw",
+          "type": "string",
+          "values": [
+                "726172652d626561636f6e",
+                "75706461746573"
+          ]
+    },
+    // dns_query: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_query",
+          "type": "string",
+          "values": [
+                "stage-sync.contoso-lab.example",
+                "rare-beacon.bad-example.test",
+                "updates.microsoft.com"
+          ]
+    },
+    // dns_query_type: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_query_type",
+          "type": "string",
+          "values": [
+                "A",
+                "AAAA",
+                "TXT"
+          ]
+    },
+    // app_tags: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "app_tags",
+          "type": "string",
+          "values": [
+                "lateral-movement",
+                "dns-anomaly",
+                "tls-risk",
+                "data-transfer",
+                "baseline"
+          ]
+    },
+    // ssl_handshake_type: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_handshake_type",
+          "type": "string",
+          "values": [
+                "client_hello",
+                "server_hello",
+                "certificate"
+          ]
+    },
+    // ssl_cipher_suite_id: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_cipher_suite_id",
+          "type": "string",
+          "values": [
+                "TLS_RSA_WITH_3DES_EDE_CBC_SHA",
+                "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+                "TLS_AES_256_GCM_SHA384"
+          ]
+    },
+    // ssl_protocol_version: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_protocol_version",
+          "type": "string",
+          "values": [
+                "TLS 1.0",
+                "TLS 1.2",
+                "TLS 1.3"
+          ]
+    },
+    // ssl_ext_sig_algorithms_len: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_ext_sig_algorithms_len",
+          "type": "string",
+          "values": [
+                "12",
+                "18"
+          ]
+    },
+    // ssl_ext_sig_algorithm_scheme: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_ext_sig_algorithm_scheme",
+          "type": "string",
+          "values": [
+                "rsa_pkcs1_sha1",
+                "ecdsa_secp256r1_sha256"
+          ]
+    },
+    // ssl_ext_sig_algorithm_hash: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_ext_sig_algorithm_hash",
+          "type": "string",
+          "values": [
+                "sha1",
+                "sha256"
+          ]
+    },
+    // ssl_ext_sig_algorithm_sig: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_ext_sig_algorithm_sig",
+          "type": "string",
+          "values": [
+                "rsa",
+                "ecdsa"
+          ]
+    },
+    // ssl_fingerprint_ja3: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_fingerprint_ja3",
+          "type": "string",
+          "values": [
+                "769,47-53-10,0-11-10,23-24,0",
+                "771,4865-4866-4867,0-11-10,23-24,0"
+          ]
+    },
+    // ssl_fingerprint_ja3s: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_fingerprint_ja3s",
+          "type": "string",
+          "values": [
+                "771,4865,0-11",
+                "769,47,0"
+          ]
+    },
+    // ssl_key_share_group: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_key_share_group",
+          "type": "string",
+          "values": [
+                "secp256r1",
+                "x25519"
+          ]
+    },
+    // ssl_fingerprint_ja3_full: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_fingerprint_ja3_full",
+          "type": "string",
+          "values": [
+                "weak-ja3-demo-fingerprint",
+                "modern-ja3-demo-fingerprint"
+          ]
+    },
+    // ssl_fingerprint_ja3s_full: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_fingerprint_ja3s_full",
+          "type": "string",
+          "values": [
+                "weak-ja3s-demo-fingerprint",
+                "modern-ja3s-demo-fingerprint"
+          ]
+    },
+    // ssl_common_name: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_common_name",
+          "type": "string",
+          "values": [
+                "legacy-api.contoso-lab.example",
+                "portal.contoso.com",
+                "unknown.bad-example.test"
+          ]
+    },
+    // ssl_issuer: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_issuer",
+          "type": "string",
+          "values": [
+                "Contoso Legacy CA",
+                "Microsoft Azure TLS Issuing CA",
+                "Untrusted Demo CA"
+          ]
+    },
+    // ssl_validity_not_before: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_validity_not_before",
+          "type": "string",
+          "values": [
+                "2024-01-01T00:00:00Z",
+                "2025-01-01T00:00:00Z"
+          ]
+    },
+    // ssl_validity_not_after: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_validity_not_after",
+          "type": "string",
+          "values": [
+                "2026-04-30T00:00:00Z",
+                "2026-12-31T00:00:00Z",
+                "2027-05-01T00:00:00Z"
+          ]
+    },
+    // ssl_certificate_raw: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_raw",
+          "type": "string",
+          "values": [
+                "demo-certificate-redacted"
+          ]
+    },
+    // ssl_organization_name: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_organization_name",
+          "type": "string",
+          "values": [
+                "Contoso",
+                "Gigamon Demo Lab"
+          ]
+    },
+    // ssl_content_type: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_content_type",
+          "type": "string",
+          "values": [
+                "handshake",
+                "application_data"
+          ]
+    },
+    // ssl_common_name_raw: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_common_name_raw",
+          "type": "string",
+          "values": [
+                "legacy-api.contoso-lab.example"
+          ]
+    },
+    // ssl_certificate_subject_cn: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_subject_cn",
+          "type": "string",
+          "values": [
+                "legacy-api.contoso-lab.example",
+                "portal.contoso.com"
+          ]
+    },
+    // ssl_certificate_subject_o: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_subject_o",
+          "type": "string",
+          "values": [
+                "Contoso",
+                "Gigamon Demo Lab"
+          ]
+    },
+    // ssl_certificate_subject_c: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_subject_c",
+          "type": "string",
+          "values": [
+                "US"
+          ]
+    },
+    // ssl_certificate_dn_issuer: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_dn_issuer",
+          "type": "string",
+          "values": [
+                "CN=Contoso Legacy CA,O=Contoso,C=US"
+          ]
+    },
+    // ssl_certificate_issuer_c: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_issuer_c",
+          "type": "string",
+          "values": [
+                "US"
+          ]
+    },
+    // ssl_certificate_subject_key_algo_raw: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_subject_key_algo_raw",
+          "type": "string",
+          "values": [
+                "rsaEncryption",
+                "id-ecPublicKey"
+          ]
+    },
+    // ssl_certificate_subject_key_algo_oid_raw: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_subject_key_algo_oid_raw",
+          "type": "string",
+          "values": [
+                "1.2.840.113549.1.1.1",
+                "1.2.840.10045.2.1"
+          ]
+    },
+    // ssl_certificate_subject_key_algo_oid: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_subject_key_algo_oid",
+          "type": "string",
+          "values": [
+                "rsaEncryption",
+                "ecPublicKey"
+          ]
+    },
+    // ssl_certificate_subject_key_size: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_subject_key_size",
+          "type": "string",
+          "values": [
+                "1024",
+                "2048",
+                "4096"
+          ]
+    },
+    // ssl_certificate_subject_key_value_raw: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_subject_key_value_raw",
+          "type": "string",
+          "values": [
+                "redacted-key-material"
+          ]
+    },
+    // ssl_certificate_algo_raw: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_algo_raw",
+          "type": "string",
+          "values": [
+                "sha1WithRSAEncryption",
+                "sha256WithRSAEncryption"
+          ]
+    },
+    // ssl_certificate_algo_oid_raw: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_algo_oid_raw",
+          "type": "string",
+          "values": [
+                "1.2.840.113549.1.1.5",
+                "1.2.840.113549.1.1.11"
+          ]
+    },
+    // ssl_certificate_algo_oid: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_certificate_algo_oid",
+          "type": "string",
+          "values": [
+                "sha1WithRSAEncryption",
+                "sha256WithRSAEncryption"
+          ]
+    },
+    // ssl_session_id: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ssl_session_id",
+          "type": "string",
+          "values": [
+                "demo-session-001",
+                "demo-session-002"
+          ]
+    },
+    // src_inner_bytes: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "src_inner_bytes",
+          "type": "string",
+          "values": [
+                "0",
+                "42000",
+                "980000"
+          ]
+    },
+    // mpls: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "mpls",
+          "type": "string",
+          "values": [
+                "",
+                "label-101"
+          ]
+    },
+    // tcp_sport: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_sport",
+          "type": "string",
+          "values": [
+                "51512",
+                "51513",
+                "49200",
+                "61022"
+          ]
+    },
+    // tcp_dport: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_dport",
+          "type": "string",
+          "values": [
+                "445",
+                "3389",
+                "443",
+                "22",
+                "8443"
+          ]
+    },
+    // udp_sport: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "udp_sport",
+          "type": "string",
+          "values": [
+                "53001",
+                "53002"
+          ]
+    },
+    // udp_dport: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "udp_dport",
+          "type": "string",
+          "values": [
+                "53",
+                "123"
+          ]
+    },
+    // app_family: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "app_family",
+          "type": "string",
+          "values": [
+                "file-sharing",
+                "remote-admin",
+                "dns",
+                "web",
+                "secure-shell"
+          ]
+    },
+    // dst_inner_bytes: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dst_inner_bytes",
+          "type": "string",
+          "values": [
+                "0",
+                "3201",
+                "204500"
+          ]
+    },
+    // total_bytes: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "total_bytes",
+          "type": "string",
+          "values": [
+                "45351",
+                "996225",
+                "2400",
+                "9016500",
+                "8640"
+          ]
+    },
+    // total_packets: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "total_packets",
+          "type": "string",
+          "values": [
+                "54",
+                "876",
+                "7",
+                "5512",
+                "42"
+          ]
+    },
+    // ingress_vlan_id: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ingress_vlan_id",
+          "type": "string",
+          "values": [
+                "120",
+                "220",
+                "310"
+          ]
+    },
+    // ip_ttl: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ip_ttl",
+          "type": "string",
+          "values": [
+                "62",
+                "64",
+                "128",
+                "255"
+          ]
+    },
+    // tcp_flags: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_flags",
+          "type": "string",
+          "values": [
+                "SYN",
+                "SYN-ACK",
+                "ACK",
+                "RST",
+                "FIN"
+          ]
+    },
+    // ip_hdr_len: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ip_hdr_len",
+          "type": "string",
+          "values": [
+                "20"
+          ]
+    },
+    // ip_frag_flags: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ip_frag_flags",
+          "type": "string",
+          "values": [
+                "DF",
+                "MF",
+                ""
+          ]
+    },
+    // tcp_ack_id: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_ack_id",
+          "type": "string",
+          "values": [
+                "100102",
+                "100203"
+          ]
+    },
+    // tcp_hdr_len: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_hdr_len",
+          "type": "string",
+          "values": [
+                "20",
+                "32"
+          ]
+    },
+    // tcp_seq_no: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_seq_no",
+          "type": "string",
+          "values": [
+                "64001",
+                "64002"
+          ]
+    },
+    // tcp_win_size: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_win_size",
+          "type": "string",
+          "values": [
+                "64240",
+                "8192"
+          ]
+    },
+    // udp_msg_len: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "udp_msg_len",
+          "type": "string",
+          "values": [
+                "72",
+                "120"
+          ]
+    },
+    // flow_start_usec: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "flow_start_usec",
+          "type": "string",
+          "values": [
+                "101000",
+                "220000"
+          ]
+    },
+    // flow_end_usec: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "flow_end_usec",
+          "type": "string",
+          "values": [
+                "901000",
+                "880000"
+          ]
+    },
+    // flow_start_sec: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "flow_start_sec",
+          "type": "string",
+          "values": [
+                "1778176800",
+                "1778176920"
+          ]
+    },
+    // flow_end_sec: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "flow_end_sec",
+          "type": "string",
+          "values": [
+                "1778176860",
+                "1778177040"
+          ]
+    },
+    // outer_src_ip: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "outer_src_ip",
+          "type": "string",
+          "values": [
+                "10.42.10.15",
+                "172.16.5.11"
+          ]
+    },
+    // outer_dst_ip: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "outer_dst_ip",
+          "type": "string",
+          "values": [
+                "10.42.20.50",
+                "198.51.100.77"
+          ]
+    },
+    // tcpflagsyn: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcpflagsyn",
+          "type": "string",
+          "values": [
+                "true",
+                "false"
+          ]
+    },
+    // tcpflagsynack: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcpflagsynack",
+          "type": "string",
+          "values": [
+                "true",
+                "false"
+          ]
+    },
+    // tcpflagfin: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcpflagfin",
+          "type": "string",
+          "values": [
+                "true",
+                "false"
+          ]
+    },
+    // tcpflagrst: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcpflagrst",
+          "type": "string",
+          "values": [
+                "true",
+                "false"
+          ]
+    },
+    // tcp_rtt: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_rtt",
+          "type": "string",
+          "values": [
+                "12",
+                "35",
+                "210",
+                "480"
+          ]
+    },
+    // tcp_loss_count: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_loss_count",
+          "type": "string",
+          "values": [
+                "0",
+                "1",
+                "7",
+                "18"
+          ]
+    },
+    // ip_wrong_crc: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "ip_wrong_crc",
+          "type": "string",
+          "values": [
+                "0",
+                "1"
+          ]
+    },
+    // dnp3_al_function_code: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dnp3_al_function_code",
+          "type": "string",
+          "values": [
+                "",
+                "READ"
+          ]
+    },
+    // dnp3_dl_function_code: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dnp3_dl_function_code",
+          "type": "string",
+          "values": [
+                "",
+                "CONFIRMED_USER_DATA"
+          ]
+    },
+    // dnp3_dl_dir: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dnp3_dl_dir",
+          "type": "string",
+          "values": [
+                "",
+                "MASTER"
+          ]
+    },
+    // modbus_exception_code: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "modbus_exception_code",
+          "type": "string",
+          "values": [
+                "",
+                "2"
+          ]
+    },
+    // SSL_version: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "SSL_version",
+          "type": "string",
+          "values": [
+                "TLS 1.0",
+                "TLS 1.2",
+                "TLS 1.3"
+          ]
+    },
+    // http_code: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "http_code",
+          "type": "string",
+          "values": [
+                "200",
+                "403",
+                "404",
+                "500"
+          ]
+    },
+    // http_rtt: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "http_rtt",
+          "type": "string",
+          "values": [
+                "22",
+                "110",
+                "650"
+          ]
+    },
+    // tcp_rtt_app: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_rtt_app",
+          "type": "string",
+          "values": [
+                "18",
+                "95",
+                "520"
+          ]
+    },
+    // tcp_flag_reset: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "tcp_flag_reset",
+          "type": "string",
+          "values": [
+                "true",
+                "false"
+          ]
+    },
+    // dns_response_time: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dns_response_time",
+          "type": "string",
+          "values": [
+                "5",
+                "25",
+                "450",
+                "1200"
+          ]
+    },
+    // http_content_encoding: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "http_content_encoding",
+          "type": "string",
+          "values": [
+                "gzip",
+                "br",
+                "identity"
+          ]
+    },
+    // snmp_version: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "snmp_version",
+          "type": "string",
+          "values": [
+                "v2c",
+                "v3"
+          ]
+    },
+    // smb_version: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "smb_version",
+          "type": "string",
+          "values": [
+                "SMB2",
+                "SMB3"
+          ]
+    },
+    // http_version: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "http_version",
+          "type": "string",
+          "values": [
+                "HTTP/1.1",
+                "HTTP/2"
+          ]
+    },
+    // hl7_version: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "hl7_version",
+          "type": "string",
+          "values": [
+                "",
+                "2.5"
+          ]
+    },
+    // hl7_msg_seg_name: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "hl7_msg_seg_name",
+          "type": "string",
+          "values": [
+                "",
+                "MSH"
+          ]
+    },
+    // dicom_pdu_data_pdv_elem_val_cs: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dicom_pdu_data_pdv_elem_val_cs",
+          "type": "string",
+          "values": [
+                "",
+                "STUDY"
+          ]
+    },
+    // dicom_pdu_data_pdv_elem_val_pn: official Gigamon CCF column typed as string.
+    // values: demo sample pool used by LogSeeder for realistic generated rows.
+    {
+          "name": "dicom_pdu_data_pdv_elem_val_pn",
+          "type": "string",
+          "values": [
+                "",
+                "DEMO^PATIENT"
+          ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+GigamonCcfMcpDemo_CL
+| where TimeGenerated >= ago(24h)
+| where dst_port in ("445", "3389", "22") or app_name in ("smb", "rdp", "ssh") or app_tags has "lateral"
+| extend TotalBytes=tolong(total_bytes), Packets=tolong(total_packets), Loss=toint(tcp_loss_count), RttMs=toint(tcp_rtt)
+| summarize FlowCount=count(), TotalBytes=sum(TotalBytes), MaxRttMs=max(RttMs), Sources=make_set(src_ip, 10), Destinations=make_set(dst_ip, 10), Apps=make_set(app_name, 10), Interfaces=make_set(intf_name, 10) by dst_port
+| order by TotalBytes desc

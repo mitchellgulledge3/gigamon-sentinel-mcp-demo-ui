@@ -1,0 +1,1128 @@
+{
+  "columns": [
+    {
+      "name": "TimeGenerated",
+      "type": "datetime"
+    },
+    {
+      "name": "RawData",
+      "type": "string",
+      "values": [
+        "gigamon-ccf visibility flow: smb lateral movement candidate",
+        "gigamon-ccf dns telemetry: suspicious lookup from workload segment",
+        "gigamon-ccf tls telemetry: weak protocol and JA3 fingerprint observed",
+        "gigamon-ccf application visibility: high-volume outbound transfer",
+        "gigamon-ccf normal baseline: sanctioned business application traffic"
+      ]
+    },
+    {
+      "name": "ts",
+      "type": "string",
+      "values": [
+        "2026-05-07T18:00:00Z",
+        "2026-05-07T18:02:00Z",
+        "2026-05-07T18:04:00Z"
+      ]
+    },
+    {
+      "name": "vendor",
+      "type": "string",
+      "values": [
+        "Gigamon"
+      ]
+    },
+    {
+      "name": "version",
+      "type": "string",
+      "values": [
+        "6.8.00",
+        "6.9.00"
+      ]
+    },
+    {
+      "name": "generator",
+      "type": "string",
+      "values": [
+        "GigaVUE-FM",
+        "Gigamon Application Metadata Intelligence",
+        "Gigamon ThreatINSIGHT"
+      ]
+    },
+    {
+      "name": "dst_mac",
+      "type": "string",
+      "values": [
+        "00:50:56:a1:10:20",
+        "00:50:56:a1:10:21",
+        "00:50:56:b2:44:10"
+      ]
+    },
+    {
+      "name": "src_mac",
+      "type": "string",
+      "values": [
+        "00:50:56:c0:00:08",
+        "00:50:56:c0:00:09",
+        "00:50:56:d4:22:18"
+      ]
+    },
+    {
+      "name": "device_inbound_interface",
+      "type": "string",
+      "values": [
+        "prod-east-west-vtap",
+        "dmz-span-01",
+        "core-fabric-ingress"
+      ]
+    },
+    {
+      "name": "app_id",
+      "type": "string",
+      "values": [
+        "445",
+        "3389",
+        "53",
+        "443",
+        "22",
+        "8443"
+      ]
+    },
+    {
+      "name": "src_ipv6",
+      "type": "string",
+      "values": [
+        "",
+        "2001:db8:10::15"
+      ]
+    },
+    {
+      "name": "dst_ipv6",
+      "type": "string",
+      "values": [
+        "",
+        "2001:db8:20::8"
+      ]
+    },
+    {
+      "name": "ip_version",
+      "type": "string",
+      "values": [
+        "4",
+        "6"
+      ]
+    },
+    {
+      "name": "next_hdr_v6",
+      "type": "string",
+      "values": [
+        "TCP",
+        "UDP",
+        ""
+      ]
+    },
+    {
+      "name": "src_bytes",
+      "type": "string",
+      "values": [
+        "42150",
+        "984223",
+        "1420",
+        "8812000",
+        "2210"
+      ]
+    },
+    {
+      "name": "dst_bytes",
+      "type": "string",
+      "values": [
+        "3201",
+        "12002",
+        "980",
+        "204500",
+        "6430"
+      ]
+    },
+    {
+      "name": "src_packets",
+      "type": "string",
+      "values": [
+        "43",
+        "784",
+        "4",
+        "5210",
+        "18"
+      ]
+    },
+    {
+      "name": "dst_packets",
+      "type": "string",
+      "values": [
+        "11",
+        "92",
+        "3",
+        "302",
+        "24"
+      ]
+    },
+    {
+      "name": "start_time",
+      "type": "string",
+      "values": [
+        "2026-05-07T18:01:01Z",
+        "2026-05-07T18:02:18Z",
+        "2026-05-07T18:03:44Z"
+      ]
+    },
+    {
+      "name": "end_time",
+      "type": "string",
+      "values": [
+        "2026-05-07T18:01:43Z",
+        "2026-05-07T18:03:10Z",
+        "2026-05-07T18:04:11Z"
+      ]
+    },
+    {
+      "name": "intf_name",
+      "type": "string",
+      "values": [
+        "prod-east-west",
+        "internet-egress",
+        "dmz-core",
+        "identity-segment"
+      ]
+    },
+    {
+      "name": "egress_intf_id",
+      "type": "string",
+      "values": [
+        "101",
+        "203",
+        "301"
+      ]
+    },
+    {
+      "name": "app_name",
+      "type": "string",
+      "values": [
+        "smb",
+        "rdp",
+        "dns",
+        "tls",
+        "ssh",
+        "https",
+        "unknown-tcp"
+      ]
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "values": [
+        "gigamon-demo-flow-001",
+        "gigamon-demo-flow-002",
+        "gigamon-demo-flow-003",
+        "gigamon-demo-flow-004"
+      ]
+    },
+    {
+      "name": "seq_num",
+      "type": "string",
+      "values": [
+        "1001",
+        "1002",
+        "1003",
+        "1004"
+      ]
+    },
+    {
+      "name": "src_ip",
+      "type": "string",
+      "values": [
+        "10.42.10.15",
+        "10.42.10.23",
+        "10.42.20.50",
+        "172.16.5.11",
+        "192.0.2.45"
+      ]
+    },
+    {
+      "name": "dst_ip",
+      "type": "string",
+      "values": [
+        "10.42.20.50",
+        "10.42.30.21",
+        "10.42.40.8",
+        "198.51.100.77",
+        "203.0.113.20"
+      ]
+    },
+    {
+      "name": "protocol",
+      "type": "string",
+      "values": [
+        "TCP",
+        "UDP"
+      ]
+    },
+    {
+      "name": "src_port",
+      "type": "string",
+      "values": [
+        "51512",
+        "51513",
+        "49200",
+        "61022",
+        "44321"
+      ]
+    },
+    {
+      "name": "dst_port",
+      "type": "string",
+      "values": [
+        "445",
+        "3389",
+        "53",
+        "443",
+        "22",
+        "8443"
+      ]
+    },
+    {
+      "name": "dns_name",
+      "type": "string",
+      "values": [
+        "stage-sync.contoso-lab.example",
+        "cdn.gigamon.example",
+        "updates.microsoft.com",
+        "rare-beacon.bad-example.test"
+      ]
+    },
+    {
+      "name": "dns_host",
+      "type": "string",
+      "values": [
+        "stage-sync.contoso-lab.example",
+        "rare-beacon.bad-example.test",
+        "updates.microsoft.com"
+      ]
+    },
+    {
+      "name": "dns_host_addr",
+      "type": "string",
+      "values": [
+        "198.51.100.77",
+        "203.0.113.20",
+        "20.42.65.90"
+      ]
+    },
+    {
+      "name": "dns_host_type",
+      "type": "string",
+      "values": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ]
+    },
+    {
+      "name": "dns_reply_code",
+      "type": "string",
+      "values": [
+        "NOERROR",
+        "NXDOMAIN",
+        "SERVFAIL"
+      ]
+    },
+    {
+      "name": "dns_ttl",
+      "type": "string",
+      "values": [
+        "60",
+        "300",
+        "3600"
+      ]
+    },
+    {
+      "name": "dns_flags",
+      "type": "string",
+      "values": [
+        "qr rd ra",
+        "rd",
+        "qr aa rd ra"
+      ]
+    },
+    {
+      "name": "dns_opcode",
+      "type": "string",
+      "values": [
+        "QUERY"
+      ]
+    },
+    {
+      "name": "dns_class",
+      "type": "string",
+      "values": [
+        "IN"
+      ]
+    },
+    {
+      "name": "dns_host_class",
+      "type": "string",
+      "values": [
+        "IN"
+      ]
+    },
+    {
+      "name": "dns_host_raw",
+      "type": "string",
+      "values": [
+        "726172652d626561636f6e",
+        "75706461746573"
+      ]
+    },
+    {
+      "name": "dns_query",
+      "type": "string",
+      "values": [
+        "stage-sync.contoso-lab.example",
+        "rare-beacon.bad-example.test",
+        "updates.microsoft.com"
+      ]
+    },
+    {
+      "name": "dns_query_type",
+      "type": "string",
+      "values": [
+        "A",
+        "AAAA",
+        "TXT"
+      ]
+    },
+    {
+      "name": "app_tags",
+      "type": "string",
+      "values": [
+        "lateral-movement",
+        "dns-anomaly",
+        "tls-risk",
+        "data-transfer",
+        "baseline"
+      ]
+    },
+    {
+      "name": "ssl_handshake_type",
+      "type": "string",
+      "values": [
+        "client_hello",
+        "server_hello",
+        "certificate"
+      ]
+    },
+    {
+      "name": "ssl_cipher_suite_id",
+      "type": "string",
+      "values": [
+        "TLS_RSA_WITH_3DES_EDE_CBC_SHA",
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+        "TLS_AES_256_GCM_SHA384"
+      ]
+    },
+    {
+      "name": "ssl_protocol_version",
+      "type": "string",
+      "values": [
+        "TLS 1.0",
+        "TLS 1.2",
+        "TLS 1.3"
+      ]
+    },
+    {
+      "name": "ssl_ext_sig_algorithms_len",
+      "type": "string",
+      "values": [
+        "12",
+        "18"
+      ]
+    },
+    {
+      "name": "ssl_ext_sig_algorithm_scheme",
+      "type": "string",
+      "values": [
+        "rsa_pkcs1_sha1",
+        "ecdsa_secp256r1_sha256"
+      ]
+    },
+    {
+      "name": "ssl_ext_sig_algorithm_hash",
+      "type": "string",
+      "values": [
+        "sha1",
+        "sha256"
+      ]
+    },
+    {
+      "name": "ssl_ext_sig_algorithm_sig",
+      "type": "string",
+      "values": [
+        "rsa",
+        "ecdsa"
+      ]
+    },
+    {
+      "name": "ssl_fingerprint_ja3",
+      "type": "string",
+      "values": [
+        "769,47-53-10,0-11-10,23-24,0",
+        "771,4865-4866-4867,0-11-10,23-24,0"
+      ]
+    },
+    {
+      "name": "ssl_fingerprint_ja3s",
+      "type": "string",
+      "values": [
+        "771,4865,0-11",
+        "769,47,0"
+      ]
+    },
+    {
+      "name": "ssl_key_share_group",
+      "type": "string",
+      "values": [
+        "secp256r1",
+        "x25519"
+      ]
+    },
+    {
+      "name": "ssl_fingerprint_ja3_full",
+      "type": "string",
+      "values": [
+        "weak-ja3-demo-fingerprint",
+        "modern-ja3-demo-fingerprint"
+      ]
+    },
+    {
+      "name": "ssl_fingerprint_ja3s_full",
+      "type": "string",
+      "values": [
+        "weak-ja3s-demo-fingerprint",
+        "modern-ja3s-demo-fingerprint"
+      ]
+    },
+    {
+      "name": "ssl_common_name",
+      "type": "string",
+      "values": [
+        "legacy-api.contoso-lab.example",
+        "portal.contoso.com",
+        "unknown.bad-example.test"
+      ]
+    },
+    {
+      "name": "ssl_issuer",
+      "type": "string",
+      "values": [
+        "Contoso Legacy CA",
+        "Microsoft Azure TLS Issuing CA",
+        "Untrusted Demo CA"
+      ]
+    },
+    {
+      "name": "ssl_validity_not_before",
+      "type": "string",
+      "values": [
+        "2024-01-01T00:00:00Z",
+        "2025-01-01T00:00:00Z"
+      ]
+    },
+    {
+      "name": "ssl_validity_not_after",
+      "type": "string",
+      "values": [
+        "2026-04-30T00:00:00Z",
+        "2026-12-31T00:00:00Z",
+        "2027-05-01T00:00:00Z"
+      ]
+    },
+    {
+      "name": "ssl_certificate_raw",
+      "type": "string",
+      "values": [
+        "demo-certificate-redacted"
+      ]
+    },
+    {
+      "name": "ssl_organization_name",
+      "type": "string",
+      "values": [
+        "Contoso",
+        "Gigamon Demo Lab"
+      ]
+    },
+    {
+      "name": "ssl_content_type",
+      "type": "string",
+      "values": [
+        "handshake",
+        "application_data"
+      ]
+    },
+    {
+      "name": "ssl_common_name_raw",
+      "type": "string",
+      "values": [
+        "legacy-api.contoso-lab.example"
+      ]
+    },
+    {
+      "name": "ssl_certificate_subject_cn",
+      "type": "string",
+      "values": [
+        "legacy-api.contoso-lab.example",
+        "portal.contoso.com"
+      ]
+    },
+    {
+      "name": "ssl_certificate_subject_o",
+      "type": "string",
+      "values": [
+        "Contoso",
+        "Gigamon Demo Lab"
+      ]
+    },
+    {
+      "name": "ssl_certificate_subject_c",
+      "type": "string",
+      "values": [
+        "US"
+      ]
+    },
+    {
+      "name": "ssl_certificate_dn_issuer",
+      "type": "string",
+      "values": [
+        "CN=Contoso Legacy CA,O=Contoso,C=US"
+      ]
+    },
+    {
+      "name": "ssl_certificate_issuer_c",
+      "type": "string",
+      "values": [
+        "US"
+      ]
+    },
+    {
+      "name": "ssl_certificate_subject_key_algo_raw",
+      "type": "string",
+      "values": [
+        "rsaEncryption",
+        "id-ecPublicKey"
+      ]
+    },
+    {
+      "name": "ssl_certificate_subject_key_algo_oid_raw",
+      "type": "string",
+      "values": [
+        "1.2.840.113549.1.1.1",
+        "1.2.840.10045.2.1"
+      ]
+    },
+    {
+      "name": "ssl_certificate_subject_key_algo_oid",
+      "type": "string",
+      "values": [
+        "rsaEncryption",
+        "ecPublicKey"
+      ]
+    },
+    {
+      "name": "ssl_certificate_subject_key_size",
+      "type": "string",
+      "values": [
+        "1024",
+        "2048",
+        "4096"
+      ]
+    },
+    {
+      "name": "ssl_certificate_subject_key_value_raw",
+      "type": "string",
+      "values": [
+        "redacted-key-material"
+      ]
+    },
+    {
+      "name": "ssl_certificate_algo_raw",
+      "type": "string",
+      "values": [
+        "sha1WithRSAEncryption",
+        "sha256WithRSAEncryption"
+      ]
+    },
+    {
+      "name": "ssl_certificate_algo_oid_raw",
+      "type": "string",
+      "values": [
+        "1.2.840.113549.1.1.5",
+        "1.2.840.113549.1.1.11"
+      ]
+    },
+    {
+      "name": "ssl_certificate_algo_oid",
+      "type": "string",
+      "values": [
+        "sha1WithRSAEncryption",
+        "sha256WithRSAEncryption"
+      ]
+    },
+    {
+      "name": "ssl_session_id",
+      "type": "string",
+      "values": [
+        "demo-session-001",
+        "demo-session-002"
+      ]
+    },
+    {
+      "name": "src_inner_bytes",
+      "type": "string",
+      "values": [
+        "0",
+        "42000",
+        "980000"
+      ]
+    },
+    {
+      "name": "mpls",
+      "type": "string",
+      "values": [
+        "",
+        "label-101"
+      ]
+    },
+    {
+      "name": "tcp_sport",
+      "type": "string",
+      "values": [
+        "51512",
+        "51513",
+        "49200",
+        "61022"
+      ]
+    },
+    {
+      "name": "tcp_dport",
+      "type": "string",
+      "values": [
+        "445",
+        "3389",
+        "443",
+        "22",
+        "8443"
+      ]
+    },
+    {
+      "name": "udp_sport",
+      "type": "string",
+      "values": [
+        "53001",
+        "53002"
+      ]
+    },
+    {
+      "name": "udp_dport",
+      "type": "string",
+      "values": [
+        "53",
+        "123"
+      ]
+    },
+    {
+      "name": "app_family",
+      "type": "string",
+      "values": [
+        "file-sharing",
+        "remote-admin",
+        "dns",
+        "web",
+        "secure-shell"
+      ]
+    },
+    {
+      "name": "dst_inner_bytes",
+      "type": "string",
+      "values": [
+        "0",
+        "3201",
+        "204500"
+      ]
+    },
+    {
+      "name": "total_bytes",
+      "type": "string",
+      "values": [
+        "45351",
+        "996225",
+        "2400",
+        "9016500",
+        "8640"
+      ]
+    },
+    {
+      "name": "total_packets",
+      "type": "string",
+      "values": [
+        "54",
+        "876",
+        "7",
+        "5512",
+        "42"
+      ]
+    },
+    {
+      "name": "ingress_vlan_id",
+      "type": "string",
+      "values": [
+        "120",
+        "220",
+        "310"
+      ]
+    },
+    {
+      "name": "ip_ttl",
+      "type": "string",
+      "values": [
+        "62",
+        "64",
+        "128",
+        "255"
+      ]
+    },
+    {
+      "name": "tcp_flags",
+      "type": "string",
+      "values": [
+        "SYN",
+        "SYN-ACK",
+        "ACK",
+        "RST",
+        "FIN"
+      ]
+    },
+    {
+      "name": "ip_hdr_len",
+      "type": "string",
+      "values": [
+        "20"
+      ]
+    },
+    {
+      "name": "ip_frag_flags",
+      "type": "string",
+      "values": [
+        "DF",
+        "MF",
+        ""
+      ]
+    },
+    {
+      "name": "tcp_ack_id",
+      "type": "string",
+      "values": [
+        "100102",
+        "100203"
+      ]
+    },
+    {
+      "name": "tcp_hdr_len",
+      "type": "string",
+      "values": [
+        "20",
+        "32"
+      ]
+    },
+    {
+      "name": "tcp_seq_no",
+      "type": "string",
+      "values": [
+        "64001",
+        "64002"
+      ]
+    },
+    {
+      "name": "tcp_win_size",
+      "type": "string",
+      "values": [
+        "64240",
+        "8192"
+      ]
+    },
+    {
+      "name": "udp_msg_len",
+      "type": "string",
+      "values": [
+        "72",
+        "120"
+      ]
+    },
+    {
+      "name": "flow_start_usec",
+      "type": "string",
+      "values": [
+        "101000",
+        "220000"
+      ]
+    },
+    {
+      "name": "flow_end_usec",
+      "type": "string",
+      "values": [
+        "901000",
+        "880000"
+      ]
+    },
+    {
+      "name": "flow_start_sec",
+      "type": "string",
+      "values": [
+        "1778176800",
+        "1778176920"
+      ]
+    },
+    {
+      "name": "flow_end_sec",
+      "type": "string",
+      "values": [
+        "1778176860",
+        "1778177040"
+      ]
+    },
+    {
+      "name": "outer_src_ip",
+      "type": "string",
+      "values": [
+        "10.42.10.15",
+        "172.16.5.11"
+      ]
+    },
+    {
+      "name": "outer_dst_ip",
+      "type": "string",
+      "values": [
+        "10.42.20.50",
+        "198.51.100.77"
+      ]
+    },
+    {
+      "name": "tcpflagsyn",
+      "type": "string",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "name": "tcpflagsynack",
+      "type": "string",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "name": "tcpflagfin",
+      "type": "string",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "name": "tcpflagrst",
+      "type": "string",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "name": "tcp_rtt",
+      "type": "string",
+      "values": [
+        "12",
+        "35",
+        "210",
+        "480"
+      ]
+    },
+    {
+      "name": "tcp_loss_count",
+      "type": "string",
+      "values": [
+        "0",
+        "1",
+        "7",
+        "18"
+      ]
+    },
+    {
+      "name": "ip_wrong_crc",
+      "type": "string",
+      "values": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "name": "dnp3_al_function_code",
+      "type": "string",
+      "values": [
+        "",
+        "READ"
+      ]
+    },
+    {
+      "name": "dnp3_dl_function_code",
+      "type": "string",
+      "values": [
+        "",
+        "CONFIRMED_USER_DATA"
+      ]
+    },
+    {
+      "name": "dnp3_dl_dir",
+      "type": "string",
+      "values": [
+        "",
+        "MASTER"
+      ]
+    },
+    {
+      "name": "modbus_exception_code",
+      "type": "string",
+      "values": [
+        "",
+        "2"
+      ]
+    },
+    {
+      "name": "SSL_version",
+      "type": "string",
+      "values": [
+        "TLS 1.0",
+        "TLS 1.2",
+        "TLS 1.3"
+      ]
+    },
+    {
+      "name": "http_code",
+      "type": "string",
+      "values": [
+        "200",
+        "403",
+        "404",
+        "500"
+      ]
+    },
+    {
+      "name": "http_rtt",
+      "type": "string",
+      "values": [
+        "22",
+        "110",
+        "650"
+      ]
+    },
+    {
+      "name": "tcp_rtt_app",
+      "type": "string",
+      "values": [
+        "18",
+        "95",
+        "520"
+      ]
+    },
+    {
+      "name": "tcp_flag_reset",
+      "type": "string",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "name": "dns_response_time",
+      "type": "string",
+      "values": [
+        "5",
+        "25",
+        "450",
+        "1200"
+      ]
+    },
+    {
+      "name": "http_content_encoding",
+      "type": "string",
+      "values": [
+        "gzip",
+        "br",
+        "identity"
+      ]
+    },
+    {
+      "name": "snmp_version",
+      "type": "string",
+      "values": [
+        "v2c",
+        "v3"
+      ]
+    },
+    {
+      "name": "smb_version",
+      "type": "string",
+      "values": [
+        "SMB2",
+        "SMB3"
+      ]
+    },
+    {
+      "name": "http_version",
+      "type": "string",
+      "values": [
+        "HTTP/1.1",
+        "HTTP/2"
+      ]
+    },
+    {
+      "name": "hl7_version",
+      "type": "string",
+      "values": [
+        "",
+        "2.5"
+      ]
+    },
+    {
+      "name": "hl7_msg_seg_name",
+      "type": "string",
+      "values": [
+        "",
+        "MSH"
+      ]
+    },
+    {
+      "name": "dicom_pdu_data_pdv_elem_val_cs",
+      "type": "string",
+      "values": [
+        "",
+        "STUDY"
+      ]
+    },
+    {
+      "name": "dicom_pdu_data_pdv_elem_val_pn",
+      "type": "string",
+      "values": [
+        "",
+        "DEMO^PATIENT"
+      ]
+    }
+  ]
+}

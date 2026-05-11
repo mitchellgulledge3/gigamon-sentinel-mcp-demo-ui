@@ -1,0 +1,6 @@
+GigamonCcfMcpDemo_CL
+| where TimeGenerated >= ago(24h)
+| where app_name == "dns" or dst_port == "53" or isnotempty(dns_query)
+| extend DnsResponseMs=toint(dns_response_time)
+| summarize Queries=count(), SlowQueries=countif(DnsResponseMs > 250), FailedQueries=countif(dns_reply_code in ("NXDOMAIN", "SERVFAIL")), QueryNames=make_set(dns_query, 10), ReplyCodes=make_set(dns_reply_code, 10), SourceIps=make_set(src_ip, 10) by dns_query_type
+| order by FailedQueries desc, SlowQueries desc

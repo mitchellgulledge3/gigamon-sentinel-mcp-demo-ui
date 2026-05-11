@@ -1,0 +1,5 @@
+GigamonCcfMcpDemo_CL
+| where TimeGenerated >= ago(24h)
+| extend TotalBytes=tolong(total_bytes), TotalPackets=tolong(total_packets)
+| summarize Flows=count(), Bytes=sum(TotalBytes), Packets=sum(TotalPackets), Sources=dcount(src_ip), Destinations=dcount(dst_ip), TopSources=make_set(src_ip, 5), TopDestinations=make_set(dst_ip, 5) by app_name, app_family, protocol
+| top 10 by Bytes desc

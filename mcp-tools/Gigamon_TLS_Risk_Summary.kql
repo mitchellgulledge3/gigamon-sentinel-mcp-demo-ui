@@ -1,0 +1,6 @@
+GigamonCcfMcpDemo_CL
+| where TimeGenerated >= ago(24h)
+| where isnotempty(ssl_protocol_version) or isnotempty(SSL_version) or dst_port in ("443", "8443")
+| extend ProtocolVersion=coalesce(ssl_protocol_version, SSL_version), CertKeySize=toint(ssl_certificate_subject_key_size), CertNotAfter=todatetime(ssl_validity_not_after)
+| summarize Sessions=count(), WeakProtocol=countif(ProtocolVersion in ("TLS 1.0", "TLS 1.1")), WeakKey=countif(CertKeySize < 2048), ExpiringSoon=countif(CertNotAfter < now() + 30d), CommonNames=make_set(ssl_common_name, 10), Issuers=make_set(ssl_issuer, 10), Ja3=make_set(ssl_fingerprint_ja3, 10) by ProtocolVersion
+| order by WeakProtocol desc, WeakKey desc, Sessions desc
