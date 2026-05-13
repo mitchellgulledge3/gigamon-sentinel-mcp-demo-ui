@@ -9,7 +9,7 @@ By the end, you should have:
 | Outcome | Proof |
 | --- | --- |
 | Demo data in Sentinel | `GigamonCcfMcpDemo_CL` returns rows |
-| Custom MCP tools published | Five Gigamon tools exist in the MCP collection |
+| Custom MCP tools published | Eight Gigamon tools exist in the MCP collection |
 | Terminal demo working | Prompts return Sentinel-backed results |
 | Platform integration path understood | Developer knows which code to reuse in Gigamon's platform |
 
@@ -47,8 +47,8 @@ az account set --subscription "<subscription-id-or-name>"
 ## Step 1: Clone the repo
 
 ```bash
-git clone https://github.com/MitchellGulledge3/gigamon-sentinel-mcp-demo.git
-cd gigamon-sentinel-mcp-demo
+git clone https://github.com/MitchellGulledge3/gigamon-sentinel-mcp-demo-ui.git
+cd gigamon-sentinel-mcp-demo-ui
 ```
 
 Show these files first:
@@ -118,25 +118,17 @@ GigamonCcfMcpDemo_CL
 
 Stop here until `RowCount` is greater than zero. If it is zero, wait a few minutes and query again.
 
-## Step 4: Publish MCP tools
+## Step 4: Publish MCP tools via the Defender portal UI
 
-Return to this repo:
+This variant of the repo intentionally does **not** ship an API publisher script. Instead, walk the Gigamon developer through `docs/publish-tools-via-ui.md`:
 
-```bash
-cd /path/to/gigamon-sentinel-mcp-demo
-```
-
-Publish:
-
-```bash
-python3 scripts/publish-mcp-tools.py \
-  --collection Gigamon-Sentinel-MCP-Demo \
-  --workspace-id "<log-analytics-workspace-customer-id>"
-```
+1. Open the Defender portal → **Investigation & response** → **Hunting** → **Advanced hunting**.
+2. For each of the eight `.kql` files in `mcp-tools/`, paste the query, click **Save** → **Save as tool**, and fill in the name/description/collection (`Gigamon-Sentinel-MCP-Demo`).
+3. After saving all eight, confirm the tool collection lists them under **Sentinel** → **MCP** → **Tool collections**.
 
 Explain this simply:
 
-> Each `.kql` file becomes one custom MCP tool. The tool is a safe, reusable question over the Sentinel table.
+> Each `.kql` file becomes one custom MCP tool. The UI flow lets us productize a Sentinel KQL query as a safe, reusable AI tool — no publisher script or API permissions needed.
 
 ## Step 5: Run the terminal demo
 
@@ -154,6 +146,9 @@ Show possible lateral movement
 Hunt DNS anomalies
 Summarize TLS risk
 Show top talkers by app
+Match observed JA3 fingerprints against known-bad signatures
+Hunt for beaconing destinations with low jitter
+Discover unsanctioned shadow IT apps
 ```
 
 Checkpoint:
@@ -165,6 +160,9 @@ Checkpoint:
 | DNS anomalies | Query types, failed/slow counts, names |
 | TLS risk | Protocol versions, weak protocol/key/cert signals |
 | Top talkers | Apps ranked by flows, bytes, packets |
+| JA3 threat match | Known-bad JA3 hits, families (e.g. Cobalt Strike, Sliver, Tor) |
+| Beacon periodicity | (src,dst,port) pairs with low jitter and tight IQR |
+| Shadow IT | Unsanctioned apps + risk category + affected hosts |
 
 ## Step 6: Show where Gigamon would customize
 
@@ -172,7 +170,7 @@ Checkpoint:
 | --- | --- | --- |
 | Real schema/table | `logseeder/GigamonCcfMcpDemo_CL.json` | Use demo table, real `GigamonV2_CL`, or customer table |
 | Tool logic | `mcp-tools/*.kql` | Which investigations should Gigamon package? |
-| Tool descriptions | `scripts/publish-mcp-tools.py` | How should tools appear to agents? |
+| Tool descriptions | Save-as-tool UI fields | How should tools appear to agents? |
 | Prompt routing | `terminal_demo.py` | Which user phrases map to which tools? |
 | Platform integration | `sentinel_mcp_demo/client.py` | Reuse the MCP client pattern inside Gigamon's app |
 
@@ -196,7 +194,7 @@ The reusable code is mostly:
 | --- | --- |
 | `sentinel_mcp_demo/client.py` | MCP initialize, list tools, call tool, parse result |
 | `mcp-tools/*.kql` | Security questions to productize |
-| `scripts/publish-mcp-tools.py` | Tool publishing pattern |
+| Save-as-tool UI flow | Tool publishing pattern that doesn't require API access |
 | `terminal_demo.py` | Prompt routing and result summarization pattern |
 
 ## Fast troubleshooting

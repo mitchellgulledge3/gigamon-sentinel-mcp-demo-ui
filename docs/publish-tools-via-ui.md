@@ -47,7 +47,7 @@ See the screenshots in the [official docs](https://learn.microsoft.com/azure/sen
 
 | Field | What to enter |
 | --- | --- |
-| **Name** | Use the `.kql` filename (without extension), e.g. `Gigamon_Visibility_Posture_Summary` or `BigID_Sensitive_Data_Posture_Summary`. The name should be discoverable so the AI model picks the right tool. |
+| **Name** | Use the `.kql` filename (without extension), e.g. `Gigamon_Visibility_Posture_Summary` or `Gigamon_JA3_Threat_Match`. The name should be discoverable so the AI model picks the right tool. |
 | **Description** | Copy the matching description from the table at the bottom of this file. |
 | **Collection** | First time through, click **Create new collection** and use the suggested collection name from the per-tool table. After that, pick the same collection for the remaining tools. |
 | **Default workspace** | Pick the workspace you ingested demo data into. This becomes the default `workspaceId` used by the agent if a prompt doesn't specify one. |
@@ -61,10 +61,10 @@ The tool is now visible in your custom MCP collection and any agent connected to
 
 ## Verify the tools are live
 
-After saving all five tools:
+After saving all eight tools:
 
 1. In the Defender portal go to **Sentinel** → **MCP** → **Tool collections** (or follow the link in the Save tool confirmation toast).
-2. Confirm the collection exists with your five tools listed.
+2. Confirm the collection exists with your eight tools listed.
 3. The collection MCP server URL is:
 
    ```
@@ -118,3 +118,6 @@ Suggested **collection name:** `Gigamon-Sentinel-MCP-Demo`
 | `mcp-tools/Gigamon_DNS_Anomaly_Hunt.kql` | `Gigamon_DNS_Anomaly_Hunt` | Hunt DNS anomalies such as failed lookups, slow responses, suspicious query names, and affected source IPs. |
 | `mcp-tools/Gigamon_TLS_Risk_Summary.kql` | `Gigamon_TLS_Risk_Summary` | Summarize TLS risk using protocol versions, weak key sizes, expiring certificates, issuers, CNs, and JA3 signals. |
 | `mcp-tools/Gigamon_Top_Talkers_By_App.kql` | `Gigamon_Top_Talkers_By_App` | Rank Gigamon-observed applications by bytes, packets, sources, and destinations. |
+| `mcp-tools/Gigamon_JA3_Threat_Match.kql` | `Gigamon_JA3_Threat_Match` | ★ Match observed JA3/JA3S TLS client fingerprints to known-bad C2/RAT signatures (Cobalt Strike, Sliver, Trickbot, Emotet, Tor, Adwind RAT). DPI-unique capability that EDR cannot answer. |
+| `mcp-tools/Gigamon_Beacon_Periodicity_Hunt.kql` | `Gigamon_Beacon_Periodicity_Hunt` | Detect C2 beacon periodicity by computing per-flow inter-arrival jitter and IQR per (src,dst,port). Flags pairs with jitter < 0.25, IQR ratio < 0.3, median gap ≥ 15s. |
+| `mcp-tools/Gigamon_Shadow_IT_App_Discovery.kql` | `Gigamon_Shadow_IT_App_Discovery` | Discover unsanctioned applications observed by Gigamon (P2P, Tor, consumer VPN, RMM, personal cloud, crypto-mining), classify by risk category, and surface the affected hosts. |

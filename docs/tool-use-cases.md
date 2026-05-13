@@ -371,12 +371,11 @@ For a Gigamon developer audience, position this as the seed of a productized pac
 
 ## How to extend the demo
 
-To add a sixth tool:
+To add another tool:
 
 1. Create a new `.kql` file in `mcp-tools/`.
-2. Add a description for that filename in `scripts/publish-mcp-tools.py`.
+2. In the Defender portal, paste the query into Advanced hunting and use **Save → Save as tool** to publish it into the `Gigamon-Sentinel-MCP-Demo` collection (see `docs/publish-tools-via-ui.md`).
 3. Add prompt keywords to `terminal_demo.py`.
-4. Re-run `scripts/publish-mcp-tools.py`.
-5. Add the tool to this document with the use case, value, talk track, and expected output.
+4. Add the tool to this document with the use case, value, talk track, and expected output.
 
 This pattern is intentionally simple because the core idea is the tool contract, not the demo shell.
