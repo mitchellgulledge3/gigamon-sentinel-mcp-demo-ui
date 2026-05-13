@@ -1,0 +1,44 @@
+// Gigamon_Shadow_IT_App_Discovery.kql
+// Discover unsanctioned / risky applications running on the network using
+// Gigamon's Application Intelligence labels. EDR cannot answer "is BitTorrent
+// or Tor or a personal VPN running on my network?" — Gigamon can.
+GigamonCcfMcpDemo_CL
+| where TimeGenerated >= ago(24h)
+| where isnotempty(app_name) or isnotempty(app_family)
+| extend AppName   = tolower(tostring(app_name))
+| extend AppFamily = tolower(tostring(app_family))
+| extend AppTags   = tolower(tostring(app_tags))
+| extend Bytes     = tolong(total_bytes)
+| extend SrcIp     = tostring(src_ip), DstIp = tostring(dst_ip)
+// classification — easily extended; the demo encodes a representative set
+| extend Category =
+    case(
+      AppName has_any ("bittorrent","utorrent","transmission") or AppTags has "p2p", "P2P_FileShare",
+      AppName has_any ("tor","i2p")                            or AppTags has "anonymizer", "Anonymizer",
+      AppName has_any ("openvpn","wireguard","expressvpn","nordvpn","mullvad","protonvpn"), "Consumer_VPN",
+      AppName has_any ("teamviewer","anydesk","logmein","splashtop","gotomypc"),            "Remote_Access",
+      AppName has_any ("dropbox","wetransfer","megaupload","mega","pcloud","mediafire"),    "Personal_Cloud_Storage",
+      AppName has_any ("telegram","wickr","signal","whatsapp","wechat","line","kik"),       "Consumer_Messaging",
+      AppName has_any ("steam","epicgames","battlenet","riotgames","origin"),               "Gaming",
+      AppName has_any ("youtube","twitch","tiktok","netflix","spotify"),                    "Streaming",
+      AppName has_any ("coinhive","minergate","xmrig") or AppTags has "cryptomining",       "CryptoMining",
+      AppName has_any ("psiphon","ultrasurf","lantern","freegate"),                         "Censorship_Bypass",
+      ""
+    )
+| where Category != ""
+| summarize Flows           = count(),
+            Bytes           = sum(Bytes),
+            UniqueSources   = dcount(SrcIp),
+            UniqueDests     = dcount(DstIp),
+            SampleSources   = make_set(SrcIp, 5),
+            SampleApps      = make_set(AppName, 5)
+  by Category
+| order by Bytes desc
+| summarize ShadowFlows      = sum(Flows),
+            ShadowBytes      = sum(Bytes),
+            ShadowSources    = sum(UniqueSources),
+            CategoriesSeen   = make_set(Category, 20),
+            TopCategory      = arg_max(Bytes, Category),
+            HighRiskCategoryHit = countif(Category in ("CryptoMining","Anonymizer","Censorship_Bypass","Consumer_VPN")),
+            SampleSourceIps  = make_set(SampleSources, 10),
+            SampleApps       = make_set(SampleApps, 10)

@@ -26,12 +26,18 @@ GIGAMON_TOOLS = {
     "dns": "Gigamon_DNS_Anomaly_Hunt",
     "tls": "Gigamon_TLS_Risk_Summary",
     "talkers": "Gigamon_Top_Talkers_By_App",
+    "ja3": "Gigamon_JA3_Threat_Match",
+    "beacon": "Gigamon_Beacon_Periodicity_Hunt",
+    "shadow": "Gigamon_Shadow_IT_App_Discovery",
 }
 
 TOOL_ROUTES = [
+    (("ja3", "fingerprint", "tls fingerprint", "c2 fingerprint"), GIGAMON_TOOLS["ja3"]),
+    (("beacon", "beaconing", "periodicity", "c2 cadence", "callback"), GIGAMON_TOOLS["beacon"]),
+    (("shadow it", "shadow", "unsanctioned", "tor", "bittorrent", "personal vpn", "crypto miner"), GIGAMON_TOOLS["shadow"]),
     (("lateral", "east-west", "rdp", "smb", "ssh", "movement"), GIGAMON_TOOLS["lateral"]),
     (("dns", "domain", "lookup", "nxdomain", "servfail"), GIGAMON_TOOLS["dns"]),
-    (("tls", "ssl", "cert", "certificate", "ja3", "weak key"), GIGAMON_TOOLS["tls"]),
+    (("tls", "ssl", "cert", "certificate", "weak key", "expired cert"), GIGAMON_TOOLS["tls"]),
     (("top", "talker", "app", "bytes", "packets", "bandwidth"), GIGAMON_TOOLS["talkers"]),
 ]
 
@@ -41,6 +47,9 @@ EXAMPLE_PROMPTS = [
     "Hunt DNS anomalies",
     "Summarize TLS risk",
     "Show top talkers by app",
+    "Match JA3 fingerprints to known C2",
+    "Hunt for beaconing periodicity",
+    "Discover shadow IT applications",
 ]
 
 
@@ -158,6 +167,32 @@ def summarize(prompt: str, tool_name: str, rows: list[dict[str, Any]], raw_text:
         return (
             f"Top talkers shows {row.get('app_name')} / {row.get('app_family')} over {row.get('protocol')} "
             f"with {row.get('Flows')} flows and {row.get('Bytes')} bytes. Top sources: {row.get('TopSources')}."
+        )
+    if tool_name == GIGAMON_TOOLS["ja3"]:
+        return (
+            f"JA3 hunt: {row.get('TotalHandshakes')} handshakes — "
+            f"{row.get('UniqueJa3')} unique JA3, {row.get('UniqueJa3s')} unique JA3S. "
+            f"Known-bad hits: {row.get('KnownBadHits')}. "
+            f"Hit fingerprints: {row.get('KnownBadJa3Samples')}. "
+            f"Clients seen: {row.get('TopClients')} → SNIs: {row.get('TopSnis')}."
+        )
+    if tool_name == GIGAMON_TOOLS["beacon"]:
+        return (
+            f"Beacon hunt: analyzed {row.get('FlowsAnalyzed')} flows across "
+            f"{row.get('CandidatePairs')} src/dst pairs. "
+            f"Beaconing pairs: {row.get('BeaconingPairs')} "
+            f"(fast<60s: {row.get('FastBeacons')}, slow≥10m: {row.get('SlowBeacons')}). "
+            f"Top beaconing sources: {row.get('TopBeaconingSources')}; "
+            f"top destinations: {row.get('TopBeaconingDests')}; "
+            f"ports: {row.get('TopBeaconingPorts')}; apps: {row.get('TopBeaconingApps')}."
+        )
+    if tool_name == GIGAMON_TOOLS["shadow"]:
+        return (
+            f"Shadow IT discovery: {row.get('ShadowFlows')} flows, "
+            f"{row.get('ShadowBytes')} bytes across {row.get('ShadowSources')} hosts. "
+            f"Categories seen: {row.get('CategoriesSeen')}. "
+            f"High-risk category hits: {row.get('HighRiskCategoryHit')}. "
+            f"Sample sources: {row.get('SampleSourceIps')}."
         )
 
     return (

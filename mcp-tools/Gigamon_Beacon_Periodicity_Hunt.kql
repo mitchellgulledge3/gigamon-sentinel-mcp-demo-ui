@@ -1,0 +1,39 @@
+// Gigamon_Beacon_Periodicity_Hunt.kql
+// Detect command-and-control beaconing by computing inter-arrival timing
+// per (src_ip, dst_ip, dst_port). Beacons exhibit low jitter and a small,
+// repeating cadence. This is a DPI-shaped question — flow-level fidelity
+// that EDR and firewall logs cannot reproduce.
+GigamonCcfMcpDemo_CL
+| where TimeGenerated >= ago(24h)
+| where isnotempty(src_ip) and isnotempty(dst_ip) and isnotempty(dst_port)
+| extend SrcIp = tostring(src_ip), DstIp = tostring(dst_ip), DstPort = tostring(dst_port)
+| extend AppName = tostring(app_name), AppFamily = tostring(app_family)
+| order by SrcIp asc, DstIp asc, DstPort asc, TimeGenerated asc
+| serialize
+| extend PrevTs = prev(TimeGenerated, 1)
+| extend PrevSrc = prev(SrcIp, 1), PrevDst = prev(DstIp, 1), PrevPort = prev(DstPort, 1)
+| extend SameFlow = (PrevSrc == SrcIp and PrevDst == DstIp and PrevPort == DstPort)
+| extend GapSec = iif(SameFlow, datetime_diff('second', TimeGenerated, PrevTs), int(null))
+| where isnotnull(GapSec) and GapSec > 0 and GapSec < 14400  // <4h between callbacks
+| summarize Flows     = count(),
+            MedianGap = percentile(GapSec, 50),
+            P25Gap    = percentile(GapSec, 25),
+            P75Gap    = percentile(GapSec, 75),
+            StdGap    = stdev(GapSec),
+            AppSeen   = any(AppName)
+  by SrcIp, DstIp, DstPort
+| where Flows >= 5  // enough samples to assess periodicity
+| extend Jitter   = todouble(StdGap) / todouble(MedianGap + 1)
+| extend IqrRatio = todouble(P75Gap - P25Gap) / todouble(MedianGap + 1)
+| extend IsBeacon = (Jitter < 0.25) and (IqrRatio < 0.3) and (MedianGap >= 15)
+| summarize FlowsAnalyzed       = sum(Flows),
+            CandidatePairs      = count(),
+            BeaconingPairs      = countif(IsBeacon),
+            FastBeacons         = countif(IsBeacon and MedianGap < 60),
+            SlowBeacons         = countif(IsBeacon and MedianGap >= 600),
+            TopBeaconingSources = make_set_if(SrcIp,    IsBeacon, 10),
+            TopBeaconingDests   = make_set_if(DstIp,    IsBeacon, 10),
+            TopBeaconingPorts   = make_set_if(DstPort,  IsBeacon, 10),
+            TopBeaconingApps    = make_set_if(AppSeen,  IsBeacon, 10),
+            MinMedianGapSec     = minif(MedianGap,      IsBeacon),
+            MaxMedianGapSec     = maxif(MedianGap,      IsBeacon)

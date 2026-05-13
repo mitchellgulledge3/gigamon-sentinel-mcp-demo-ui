@@ -1,0 +1,41 @@
+// Gigamon_JA3_Threat_Match.kql
+// JA3 / JA3S fingerprint hunting — find TLS clients/servers whose handshake
+// matches known C2 / RAT / malicious tooling fingerprints, regardless of SNI.
+// Why this is unique to Gigamon: only deep-observability sensors capture the
+// JA3/JA3S fingerprint; EDR cannot derive it from the host.
+GigamonCcfMcpDemo_CL
+| where TimeGenerated >= ago(24h)
+| where isnotempty(ssl_fingerprint_ja3) or isnotempty(ssl_fingerprint_ja3s)
+| extend Ja3   = tostring(ssl_fingerprint_ja3)
+| extend Ja3s  = tostring(ssl_fingerprint_ja3s)
+| extend Sni   = coalesce(tostring(ssl_common_name), tostring(ssl_certificate_subject_cn))
+| extend Issuer= tostring(ssl_certificate_dn_issuer)
+| extend SrcIp = tostring(src_ip), DstIp = tostring(dst_ip), DstPort = tostring(dst_port)
+// "known bad" JA3 / JA3S list — would be a watchlist in production. Inline for the demo.
+| extend KnownBadJa3  = pack_array(
+    "e7d705a3286e19ea42f587b344ee6865", // Trickbot
+    "a0e9f5d64349fb13191bc781f81f42e1", // Emotet
+    "37f463bf4616ecd445d4a1937da06e19", // Adwind RAT
+    "72a589da586844d7f0818ce684948eea", // Tor browser baseline
+    "51c64c77e60f3980eea90869b68c58a8", // Sliver C2
+    "e5f1a47e3d5d8b3f3e2b4f53a3c6a32f"  // Cobalt Strike default
+  )
+| extend KnownBadJa3s = pack_array(
+    "8f2a52326e34c20bb88e4b1c4f6a1a92", // Cobalt Strike server
+    "75e1f1d04c5a4f6e1b2c8d9a1234abcd"  // Sliver server
+  )
+| extend Ja3Hit  = iif(set_has_element(KnownBadJa3,  Ja3),  Ja3,  "")
+| extend Ja3sHit = iif(set_has_element(KnownBadJa3s, Ja3s), Ja3s, "")
+| extend IsKnownBad = isnotempty(Ja3Hit) or isnotempty(Ja3sHit)
+| summarize TotalHandshakes      = count(),
+            UniqueJa3            = dcount(Ja3),
+            UniqueJa3s           = dcount(Ja3s),
+            RareJa3              = dcountif(Ja3, isnotempty(Ja3)),
+            KnownBadHits         = countif(IsKnownBad),
+            KnownBadJa3Samples   = make_set_if(Ja3Hit,  isnotempty(Ja3Hit),  10),
+            KnownBadJa3sSamples  = make_set_if(Ja3sHit, isnotempty(Ja3sHit), 10),
+            TopClients           = make_set_if(SrcIp, IsKnownBad, 10),
+            TopServers           = make_set_if(DstIp, IsKnownBad, 10),
+            TopSnis              = make_set_if(Sni,   IsKnownBad, 10),
+            TopIssuers           = make_set_if(Issuer,IsKnownBad, 10),
+            TopPorts             = make_set_if(DstPort,IsKnownBad,10)

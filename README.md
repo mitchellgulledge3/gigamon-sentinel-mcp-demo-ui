@@ -123,6 +123,9 @@ The MCP tools expose that investigation as reusable capabilities:
 | `Gigamon_DNS_Anomaly_Hunt` | Hunt suspicious or slow DNS activity |
 | `Gigamon_TLS_Risk_Summary` | Summarize weak TLS, weak keys, expiring certs, JA3/JA3S signals |
 | `Gigamon_Top_Talkers_By_App` | Find top applications, sources, destinations, bytes, packets |
+| `Gigamon_JA3_Threat_Match` | ★ Match observed JA3/JA3S to known-bad C2/RAT fingerprints (Cobalt Strike, Sliver, Trickbot, Emotet, Tor) |
+| `Gigamon_Beacon_Periodicity_Hunt` | Detect C2 beaconing via inter-arrival jitter + IQR per (src,dst,port) |
+| `Gigamon_Shadow_IT_App_Discovery` | Discover unsanctioned apps (P2P, Tor, consumer VPN, RMM, personal cloud, crypto-mining) |
 
 For the full narrative, value proposition, latest real outputs, and talk track for each tool, see [`docs/tool-use-cases.md`](docs/tool-use-cases.md).
 
@@ -260,8 +263,11 @@ The terminal demo has a simple prompt router:
 | --- | --- |
 | `lateral`, `east-west`, `rdp`, `smb`, `ssh` | `Gigamon_Lateral_Movement_Triage` |
 | `dns`, `domain`, `lookup`, `nxdomain`, `servfail` | `Gigamon_DNS_Anomaly_Hunt` |
-| `tls`, `ssl`, `cert`, `certificate`, `ja3` | `Gigamon_TLS_Risk_Summary` |
+| `tls`, `ssl`, `cert`, `certificate`, `weak key` | `Gigamon_TLS_Risk_Summary` |
 | `top`, `talker`, `app`, `bytes`, `packets` | `Gigamon_Top_Talkers_By_App` |
+| `ja3`, `fingerprint`, `c2 fingerprint` | `Gigamon_JA3_Threat_Match` |
+| `beacon`, `beaconing`, `periodicity`, `callback` | `Gigamon_Beacon_Periodicity_Hunt` |
+| `shadow it`, `tor`, `bittorrent`, `personal vpn`, `crypto miner` | `Gigamon_Shadow_IT_App_Discovery` |
 | anything else | `Gigamon_Visibility_Posture_Summary` |
 
 This router is intentionally simple. In a production ISV app, this could be replaced with an LLM planner, a workflow engine, or explicit UI buttons.
@@ -317,3 +323,48 @@ For a real Gigamon-delivered asset, replace the demo pieces as follows:
 | `docs/working-session-guide.md` | Methodical live-call walkthrough for Microsoft + Gigamon |
 | `docs/tool-use-cases.md` | Detailed use-case, value-add, and story guide for every MCP tool |
 | `docs/source-line-notes.md` | Exhaustive source-line notes for Python and JSON files |
+| `GigamonCcfMcpDemo_CL` | Use the real `GigamonV2_CL` table or customer-selected table |
+| LogSeeder sample values | Use real product telemetry from the connector |
+| Static prompt router | Use explicit product UI actions or an agent planner |
+| Terminal demo | Embed the same tool calls into a Gigamon console, Copilot-like app, or partner integration |
+| Single workspace ID | Let customer configuration choose the Sentinel workspace |
+
+## Files
+
+| Path | Purpose |
+| --- | --- |
+| `logseeder/GigamonCcfMcpDemo_CL.json` | LogSeeder schema derived from the official Gigamon connector schema |
+| `logseeder/GigamonCcfMcpDemo_CL.annotated.jsonc` | Commented explanation of the schema without breaking valid JSON |
+| `mcp-tools/*.kql` | KQL definitions for custom Sentinel MCP tools |
+| `scripts/publish-mcp-tools.py` | Publishes the KQL files as Sentinel custom MCP tools |
+| `terminal_demo.py` | Interactive terminal prompt loop that routes prompts to the Gigamon MCP tools |
+| `sentinel_mcp_demo/` | Minimal Sentinel MCP client used by the terminal demo |
+| `docs/demo-script.md` | Step-by-step presenter script |
+| `docs/working-session-guide.md` | Methodical live-call walkthrough for Microsoft + Gigamon |
+| `docs/tool-use-cases.md` | Detailed use-case, value-add, and story guide for every MCP tool |
+| `docs/source-line-notes.md` | Exhaustive source-line notes for Python and JSON files |
+
+---
+
+## Live capture — all 8 tools (May 13, 2026)
+
+These are the actual MCP tool responses against the live `GigamonCcfMcpDemo_CL` table in the demo workspace. Each row is one `terminal_demo.py --show-raw --prompt "..."` invocation.
+
+| Tool | Headline result |
+| --- | --- |
+| `Gigamon_Visibility_Posture_Summary` | 1,500 events · 5 sources · 5 destinations · 3.05 GB · apps include `telegram`, `twitch`, `trickbot` |
+| `Gigamon_Lateral_Movement_Triage` | 202 candidate flows on dst port 22 · 459 MB · 5 sources / 5 destinations |
+| `Gigamon_DNS_Anomaly_Hunt` | 491 A queries · 345 failed · 254 slow · suspicious: `rare-beacon.bad-example.test` |
+| `Gigamon_TLS_Risk_Summary` | 482 TLS 1.0 sessions · 162 weak-key obs · 160 expiring certs |
+| `Gigamon_Top_Talkers_By_App` | `https / remote-admin` over TCP — 24 flows · 69 MB |
+| ★ `Gigamon_JA3_Threat_Match` | **1,500 handshakes · 9 unique JA3 · 536 known-bad hits** across Cobalt Strike, Sliver, Trickbot, Emotet, Tor, Adwind RAT |
+| `Gigamon_Beacon_Periodicity_Hunt` | 737 flows · 100 src/dst pairs · 0 candidate beacons (clean baseline) |
+| `Gigamon_Shadow_IT_App_Discovery` | 331 shadow flows · 701 MB · 44 hosts · 9 categories · 4 high-risk hits |
+
+### Why JA3 is the flagship
+
+EDR cannot see TLS handshake fingerprints. Only a deep-observability sensor on the wire (Gigamon) can. With one MCP tool call from natural language, Security Copilot now answers *"are any TLS clients fingerprinting as Cobalt Strike?"* with **536 hits across six threat families**.
+
+### Note on the "0 beacons" result
+
+The beacon hunter returns 0 candidate beacons against the current data — that's the **expected, clean** state. The tool flags pairs only when jitter < 0.25 AND IQR ratio < 0.3 AND median gap ≥ 15s. The companion notebook [`04-beacon-periodicity-analysis.ipynb`](https://github.com/MitchellGulledge3/gigamon-sentinel-notebooks) does the same math visually so analysts can drill in even when the MCP tool returns "all clear."
